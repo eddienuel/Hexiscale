@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.socketbytes.hexiscale"
+        minSdkVersion 18
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/services/org.androidannotations.plugin.AndroidAnnotationsPlugin'
+        exclude 'asm-license.txt'
+    }
+}
+
+def AAVersion = '4.0.0'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.wolkabout:restandroid:1.0.6'
+    compile 'com.wolkabout:wolk:1.0'
+    compile 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.5'
+
+    compile "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:rest-spring-api:$AAVersion"
+    compile "org.androidannotations:rest-spring:$AAVersion"
+    compile 'com.wang.avi:library:2.1.3'
+}
