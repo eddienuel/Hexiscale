@@ -73,22 +73,6 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-//    private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            final String action = intent.getAction();
-//            if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
-//                invalidateOptionsMenu();
-//                Intent intentAct = new Intent(HomeActivity.this, DeviceScanActivity.class);
-//                startActivity(intentAct);
-//            } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
-//                data = intent.getByteArrayExtra(BluetoothLeService.EXTRA_DATA);
-//                uuid = intent.getStringExtra(BluetoothLeService.EXTRA_CHAR);
-//                displayCharData(uuid, data);
-//            }
-//        }
-//    };
-
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -158,7 +142,7 @@ public class HomeActivity extends AppCompatActivity {
         if (uuid.equals(HexiwearService.UUID_CHAR_PRESSURE)) {
             float kgWeight = data * SCALE * WEIGHT_RESOLUTION;
             DecimalFormat df = new DecimalFormat("#.##");
-            weightString = df.format(kgWeight);
+            weightString = df.format(kgWeight * 10.0);
             tmpString = df.format(kgWeight) + (" Kg");
             displayData(txtView_weight, tmpString);
         }
